@@ -35,7 +35,9 @@ mu_log=zeros(R,NAvr);
 for i=1:NAvr
     rng(217928+i); % seed
     % reference:
-    u=sqrt(qu)*conv(randn(1,length(h)+R-1),h)/sqrt(Rm(1,1));u=u(length(h):end);  
+    qh=sum(h.^2);
+    u=sqrt(qu)*conv(randn(1,length(h)+R-1),h)/sqrt(qh);
+    u=u(length(h):end);  
     v=sqrt(qv)*randn(R,1);  % measurement noise
     
     % initialization
@@ -72,6 +74,7 @@ plot(10*log10(mean(w_msq_log,2)));
 xlabel('time');
 ylabel('Mean Coefficient Square Error (dBs)');
 grid on;
+%saveas(gcf, '../results/fig1.png')
 
 figure(2);
 n_t_avr = 10;
@@ -88,6 +91,7 @@ legend('desired', 'error');
 xlabel('time');
 ylabel('Error (dBs)');
 grid on;
+%saveas(gcf, '../results/fig2.png')
 
 figure(3);
 semilogy(mean(qo_log,3));
@@ -99,16 +103,18 @@ legend('qw','qv', 'true qw');
 ylabel('Estimated values');
 xlabel('Time');
 grid on;
+%saveas(gcf, '../results/fig3.png')
 
 figure(4); 
 semilogy(reshape(qo_log(:,2,:),R,[]));
 ylabel('Estimates of q_v');
 xlabel('Time');
 grid on;
+%saveas(gcf, '../results/fig4.png')
 
 figure(5);
 semilogy(mean(mu_log,2));
 ylabel('\mu');
 xlabel('Time');
 grid on;
-
+%saveas(gcf, '../results/fig5.png')
