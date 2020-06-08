@@ -1,8 +1,7 @@
 % test_BSLMS
 % 
 % Attachment to the Paper
-% P. A. C. Lopes, "A Bayesian Step Least Mean Squares Algorithm for
-% Gaussian Signals," IEEE Signal Processing Letters, 2019
+% P. A. C. Lopes, "A Bayesian Step Least Mean Squares Algorithm for Gaussian Signals"
 
 % simulation parameters
 NAvr=50;        % number of Monte Carlo runs
